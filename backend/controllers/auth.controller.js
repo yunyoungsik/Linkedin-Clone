@@ -64,19 +64,19 @@ export const login = async (req, res) => {
 	try {
 		const { username, password } = req.body;
 
-		// Check if user exists
+		// 사용자 존재 여부 확인
 		const user = await User.findOne({ username });
 		if (!user) {
 			return res.status(400).json({ message: "Invalid credentials" });
 		}
 
-		// Check password
+		// 비밀번호 확인
 		const isMatch = await bcrypt.compare(password, user.password);
 		if (!isMatch) {
 			return res.status(400).json({ message: "Invalid credentials" });
 		}
 
-		// Create and send token
+		// 토큰 생성 및 전송
 		const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: "3d" });
 		await res.cookie("jwt-linkedin", token, {
 			httpOnly: true,
