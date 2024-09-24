@@ -3,6 +3,8 @@ import User from '../models/user.model.js';
 
 export const getSuggestedConnections = async (req, res) => {
   try {
+    const currentUser = await User.findById(req.user._id).select('connections');
+
     // 이미 연결되지 않은 사용자들을 찾아라, 그리고 우리의 프로필을 추천하지 말 것
     const suggestedUser = await User.find({
       _id: {
@@ -27,6 +29,8 @@ export const getPublicProfile = async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
+
+    res.json(user);
   } catch (error) {
     console.error('Error in getPublicProfile controller:', error);
     res.status(500).json({ message: 'Server error' });
@@ -56,14 +60,14 @@ export const updateProfile = async (req, res) => {
       }
     }
 
-    if(req.body.profilePicture){
+    if (req.body.profilePicture) {
       const result = await cloudinary.uploader.upload(req.body.profilePicture);
-      updatedData.profilePicture = result.secure_url
+      updatedData.profilePicture = result.secure_url;
     }
 
-    if(req.body.bannerImg){
+    if (req.body.bannerImg) {
       const result = await cloudinary.uploader.upload(req.body.bannerImg);
-      updatedData.bannerImg = result.secure_url
+      updatedData.bannerImg = result.secure_url;
     }
 
     const user = await User.findByIdAndUpdate(
