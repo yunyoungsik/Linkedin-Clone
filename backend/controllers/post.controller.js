@@ -103,7 +103,7 @@ export const createComment = async (req, res) => {
     ).populate('author', 'name email username profilePicture headline');
 
     // 댓글 작성자가 게시물 작성자가 아닌 경우 알림 생성
-    if (post.author.toString() !== req.user._id.toString()) {
+    if (post.author._id.toString() !== req.user._id.toString()) {
       const newNotification = new Notification({
         recipient: post.author,
         type: 'comment',

@@ -30,6 +30,7 @@ npm i react-router-dom
 npm i @tanstack/react-query
 npm i axios react-hot-toast
 npm i lucide-react
+npm i date-fns
 ```
 
 ```
