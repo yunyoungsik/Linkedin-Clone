@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { axiosInstance } from '../lib/aixos';
+import { axiosInstance } from '../lib/axios';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { Check, Clock, X, UserCheck, UserPlus } from 'lucide-react';
