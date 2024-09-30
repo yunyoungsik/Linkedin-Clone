@@ -6,7 +6,7 @@ import { axiosInstance } from './lib/axios';
 import Layout from './components/layout/Layout';
 
 import HomePage from './pages/HomePage';
-import SignUpPage from './pages/auth/SignupPage';
+import SignUpPage from './pages/auth/SignUpPage';
 import LoginPage from './pages/auth/LoginPage';
 import NotificationsPage from './pages/NotificationsPage';
 import NetworkPage from './pages/NetworkPage';
