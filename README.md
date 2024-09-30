@@ -1,4 +1,7 @@
 # Linkedin Clone
+<img style="width: 100%" src="https://github.com/yunyoungsik/Linkedin-Clone/blob/main/frontend/public/thumnail.png?raw=true" />
+
+[참고영상](https://youtu.be/Ycg48pVp3SU?si=SwV9RpdomWcs3mDO)
 
 ## backend
 ```
